@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="ChiaIn&#39;s space">
+    <meta name="keyword" content="undergraduate">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        Attention与Self-Attention学习笔记 - ChiaIn&#39;s Blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> To Live </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>Chu ChiaIn</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Attention-amp-Self-Attention"><span class="toc-text">Attention &amp; Self-Attention</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#相似度计算"><span class="toc-text">相似度计算</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#attention应用范围"><span class="toc-text">attention应用范围</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#googleMT的attention-model"><span class="toc-text">googleMT的attention model</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#attention与CNN的组合模型"><span class="toc-text">attention与CNN的组合模型</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> To Live </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        Attention与Self-Attention学习笔记
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2020-03-30 14:39:00</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#Deep Learning" title="Deep Learning">Deep Learning</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h3 id="Attention-amp-Self-Attention"><a href="#Attention-amp-Self-Attention" class="headerlink" title="Attention &amp; Self-Attention"></a>Attention &amp; Self-Attention</h3><ol>
+<li>attention: 输入x与输出y的每个序列做相似性对比 </li>
+<li>self-attention: 句子内部的某个部分与其余部分做相似性比较    <h5 id="相似度计算"><a href="#相似度计算" class="headerlink" title="相似度计算"></a>相似度计算</h5>attention的相似度计算运用的就是缩放点积<br><img src="/2020/03/30/Attention与Self-Attention学习笔记/attention3.png" alt>   </li>
+</ol>
+<blockquote>
+<p>优点：解决长距离依赖问题 </p>
+<p>缺点：不适用于输入序列n大于表示维度d的情况  === n&gt;d怎么办:每个词不是和所有剩余的词计算相似度，而是只与限制的r个词计算相似度</p>
+</blockquote>
+<h4 id="attention应用范围"><a href="#attention应用范围" class="headerlink" title="attention应用范围"></a>attention应用范围</h4><p>目前attention机制在自然语言处理方向的应用非常广泛，大多应用在文本摘要，文本理解，文本分类，机器翻译，人机对话，该机制在NLP中的应用带来的一个优点就是可以通过<strong>可视化attention矩阵</strong>来告诉大家神经网络在进行任务时关注了哪几个部分。<br>有人将attention机制的核心概括为自动加权。</p>
+<p><img src="/2020/03/30/Attention与Self-Attention学习笔记/attention1.png" alt></p>
+<h4 id="googleMT的attention-model"><a href="#googleMT的attention-model" class="headerlink" title="googleMT的attention model"></a>googleMT的attention model</h4><p><img src="/2020/03/30/Attention与Self-Attention学习笔记/attention2.png" alt></p>
+<p>根据<em>Figure1</em>我们可以看到每个<strong>Muti-Head Attention layer</strong>后面会有一个Add&amp;Norm layer（残差连接和对层），这个层就是用于<strong>结果归一化</strong>，<strong>为了优化深度网络</strong>。  </p>
+<p><img src="/2020/03/30/Attention与Self-Attention学习笔记/attention4.png" alt><br>由Muti-Head Attention的图解可以看出Muti-Head的意义就是经过h次attention相似度计算。这样的好处是可以允许模型在不同的表示子空间中学习到相关的信息，可以通过attention可视化来进一步理解。   </p>
+<p><img src="/2020/03/30/Attention与Self-Attention学习笔记/attention5.png" alt>   </p>
+<p>attention可视化图中：不同颜色代表不同头的结果，颜色越深attention值越大，Self-Attention在这里可以学习到句子内部长距离依赖<em>making … more difficult</em>这个短语。    </p>
+<p><img src="/2020/03/30/Attention与Self-Attention学习笔记/attention6.png" alt><br>一个头和两个头学习到的内容对比：两个头不仅可以学习到law 还可以学习到 application依赖关系 =&gt; 是不是可以确定头的数量和学习到内容数量之间的相等关系??  </p>
+<h4 id="attention与CNN的组合模型"><a href="#attention与CNN的组合模型" class="headerlink" title="attention与CNN的组合模型"></a>attention与CNN的组合模型</h4><ul>
+<li><p>在卷积前使用attention，通过attention矩阵计算出相应句对的attention feature map，然后连同原来的feature map一起输入到卷积层 </p>
+<blockquote>
+<p>在我的理解中，原来的feature map应该就是指word embedding vector   </p>
+</blockquote>
+</li>
+<li><p>在池化时进行attention，经过attention对卷积后的表达重新加权后再池化</p>
+</li>
+<li>在卷积前和池化前都使用attention</li>
+</ul>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="#">ChiaIn</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://airclouds-blog.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+
+
+</html>

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="ChiaIn&#39;s space">
+    <meta name="keyword" content="undergraduate">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        react生命周期相关问题 - ChiaIn&#39;s Blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> To Live </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>Chu ChiaIn</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#组件初始化"><span class="toc-text">组件初始化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#super"><span class="toc-text">super</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#constructor-NaN"><span class="toc-text">constructor</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#挂载"><span class="toc-text">挂载</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#componentWillMount"><span class="toc-text">componentWillMount</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#render"><span class="toc-text">render</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#componentDidMount"><span class="toc-text">componentDidMount</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#更新"><span class="toc-text">更新</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#componentWillUpdate"><span class="toc-text">componentWillUpdate</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#shouldComponentUpdate"><span class="toc-text">shouldComponentUpdate</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#render-1"><span class="toc-text">render</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#componentDidUpdate"><span class="toc-text">componentDidUpdate</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#other"><span class="toc-text">other</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#componentWillReceiveProps-nextProps"><span class="toc-text">componentWillReceiveProps (nextProps)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#getDerivedStateFromProps-nextProps-prevState"><span class="toc-text">getDerivedStateFromProps(nextProps, prevState)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#getSnapshotBeforeUpdate-prevProps-prevState"><span class="toc-text">getSnapshotBeforeUpdate(prevProps, prevState)</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#卸载"><span class="toc-text">卸载</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#componentWillUnmount"><span class="toc-text">componentWillUnmount</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hooks"><span class="toc-text">Hooks</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-text">Reference</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> To Live </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        react生命周期相关问题
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2020-04-07 14:19:18</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#React" title="React">React</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h2 id="组件初始化"><a href="#组件初始化" class="headerlink" title="组件初始化"></a>组件初始化</h2><p><strong>以下介绍基于类组件，部分不适用于函数组件。</strong><br><img src="/2020/04/07/react生命周期相关问题/react生命周期163.png" alt="React version16.3 生命周期图片"><br><img src="/2020/04/07/react生命周期相关问题/react生命周期.jpg" alt="react生命周期"></p>
+<h3 id="super"><a href="#super" class="headerlink" title="super"></a>super</h3><p>通过<strong>调用构造方法</strong>，将props注入子组件。</p>
+<h3 id="constructor-NaN"><a href="#constructor-NaN" class="headerlink" title="constructor"></a>constructor</h3><p>基类(React Component)的构造方法。用于定义组件的初始内容，e.g. this.state.它接受两个参数：props和context，当想在函数内部使用这两个参数时，需使用super()传入这两个参数。    </p>
+<h2 id="挂载"><a href="#挂载" class="headerlink" title="挂载"></a>挂载</h2><p>componentWillMount和componentDidMount都只会被调用一次</p>
+<h3 id="componentWillMount"><a href="#componentWillMount" class="headerlink" title="componentWillMount"></a>componentWillMount</h3><p>在这个生命周期中调用setState不会有任何重新渲染，因为数据还没挂载上去。</p>
+<p></p><p style="color:#FF4469">此时还未渲染DOM。</p><p></p>
+<h3 id="render"><a href="#render" class="headerlink" title="render"></a>render</h3><ul>
+<li>纯函数。</li>
+<li>props和state的重传递和重赋值，无论值是否真正的改变都会引起组件的重新render。</li>
+<li>render返回的是react组件</li>
+<li>不能再render中执行this.setState </li>
+</ul>
+<p>render函数会插入jsx生成的dom结构，react会生成一份虚拟dom树，在每一次组件更新时，在此react会通过其<strong>diff算法</strong>比较更新前后的新旧DOM树，比较以后，找到最小的有差异的DOM节点，并重新渲染。</p>
+<h3 id="componentDidMount"><a href="#componentDidMount" class="headerlink" title="componentDidMount"></a>componentDidMount</h3><p></p><p style="color:#FF4469">此时dom节点已经生成，可以在这里调用ajax请求，返回数据setState后组件会重新渲染。</p><p></p>
+<h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><p>在上文已经说过：props和state的重传递和重赋值，无论值是否真正的改变都会引起组件的重新。所以只要props和state一改变，组件就会update。有时候可能是不必要的更新，e.g.：我们只需要监听值是否改变从而完成一系列的操作，但是值没有改变我们就不要重复更新。react中涉及更新的方法会涉及以下自带参数：prevState,prevProps，nextState，nextProps.可以按需使用。</p>
+<h3 id="componentWillUpdate"><a href="#componentWillUpdate" class="headerlink" title="componentWillUpdate"></a>componentWillUpdate</h3><p>常见的 componentWillUpdate 的用例是在组件更新前，<strong>读取当前某个 DOM 元素的状态，并在 componentDidUpdate 中进行相应的处理。</strong><br>这里可以拿到nextProps和nextState。</p>
+<h3 id="shouldComponentUpdate"><a href="#shouldComponentUpdate" class="headerlink" title="shouldComponentUpdate"></a>shouldComponentUpdate</h3><p>用于优化更新，防止不必要更新。实现思路：</p>
+<ol>
+<li>通过nextProps和this.props的某个值的相等关系来返回true/false来决定更新与否。</li>
+<li>通过之前的props和this.props来手动setState，通过state的更新触发更新。</li>
+</ol>
+<blockquote>
+<p>其实这种思路的操作也不一定是需要在shouldComponentUpdate里面去完成，也可以放在componentWillUpdate中完成。另外我认为根据业务的需求，我们或许不需要占用一个state去存props的值，只要在发生改变后<strong>去到componentDidUpdate中</strong>完成相应操作就可以，当然如果这个操作仅通过自动渲染就可以完成，那使用state的方法无疑是比较方便的。</p>
+</blockquote>
+<h3 id="render-1"><a href="#render-1" class="headerlink" title="render"></a>render</h3><p>同上，不理解可以看图2</p>
+<h3 id="componentDidUpdate"><a href="#componentDidUpdate" class="headerlink" title="componentDidUpdate"></a>componentDidUpdate</h3><p>这里可以拿到prevProps和prevState，即更新前的props和state。</p>
+<h3 id="other"><a href="#other" class="headerlink" title="other"></a>other</h3><h4 id="componentWillReceiveProps-nextProps"><a href="#componentWillReceiveProps-nextProps" class="headerlink" title="componentWillReceiveProps (nextProps)"></a>componentWillReceiveProps (nextProps)</h4><p>在接受父组件改变后的props需要重新渲染组件时用到的比较多<br>接受一个参数nextProps<br>通过对比nextProps和this.props，将nextProps的state为当前组件的state，从而重新渲染组件</p>
+<h4 id="getDerivedStateFromProps-nextProps-prevState"><a href="#getDerivedStateFromProps-nextProps-prevState" class="headerlink" title="getDerivedStateFromProps(nextProps, prevState)"></a>getDerivedStateFromProps(nextProps, prevState)</h4><p>代替componentWillReceiveProps()。<br><strong>getDerivedStateFromProps前面要加上static保留字，声明为静态方法，不然会被react忽略掉</strong><br>getDerivedStateFromProps里面的this为undefined.<br>getDerivedStateFromProps 中禁止了组件去访问 this.props，强制让开发者去比较nextProps 与 prevState 中的值，以确保当开发者用到 getDerivedStateFromProps 这个生命周期函数时，就是在根据当前的 props 来更新组件的 state，而不是去做其他一些让组件自身状态变得更加不可预测的事情。<br>返回值：null表不更新，否则就返回一个对象更新状态。<br>对比用法： </p>
+<pre><code>componentWillReceiveProps (nextProps) {
+    nextProps.openNotice !== this.props.openNotice&amp;&amp;this.setState({
+    openNotice:nextProps.openNotice
+
+    }，() =&gt; {  
+      console.log(this.state.openNotice:nextProps)
+      //将state更新为nextProps,在setState的第二个参数（回调）可以打印出新的state
+    })
+}
+
+// before
+componentWillReceiveProps(nextProps) {
+    if (nextProps.isLogin !== this.props.isLogin) {
+        this.setState({ 
+          isLogin: nextProps.isLogin,   
+        });
+    }
+    if (nextProps.isLogin) {
+        this.handleClose();
+    }
+}
+// after
+static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.isLogin !== prevState.isLogin) {
+        return {
+              isLogin: nextProps.isLogin,
+        };
+    }
+    return null;
+}
+componentDidUpdate(prevProps, prevState) {
+    if (!prevState.isLogin &amp;&amp; this.props.isLogin) {
+        this.handleClose();
+    }
+}
+</code></pre><h4 id="getSnapshotBeforeUpdate-prevProps-prevState"><a href="#getSnapshotBeforeUpdate-prevProps-prevState" class="headerlink" title="getSnapshotBeforeUpdate(prevProps, prevState)"></a>getSnapshotBeforeUpdate(prevProps, prevState)</h4><p>代替componentWillUpdate。<br>二者的区别就在于：getSnapshotBeforeUpdate可以保证获取的DOM 元素状态和commit的保持一致。<br>它使组件可以在可能更改之前从DOM捕获一些信息（例如滚动位置）。<br>getSnapshotBeforeUpdate 会在最终的 render 之前被调用，也就是说在 getSnapshotBeforeUpdate 中读取到的 DOM 元素状态是可以保证与 componentDidUpdate 中一致的。<br>此生命周期返回的任何值都将作为参数传递给componentDidUpdate()。</p>
+<pre><code>class ScrollingList extends React.Component {
+    constructor(props) {
+        super(props);
+         this.listRef = React.createRef();
+    }           
+    getSnapshotBeforeUpdate(prevProps, prevState) {
+    //我们是否要添加新的 items 到列表?
+    // 捕捉滚动位置，以便我们可以稍后调整滚动.
+        if (prevProps.list.length &lt; this.props.list.length) {
+              const list = this.listRef.current;
+              return list.scrollHeight - list.scrollTop;
+        }
+        return null;
+    }   
+    componentDidUpdate(prevProps, prevState, snapshot) {
+    //如果我们有snapshot值, 我们已经添加了 新的items.
+    // 调整滚动以至于这些新的items 不会将旧items推出视图。
+    // (这边的snapshot是 getSnapshotBeforeUpdate方法的返回值)
+        if (snapshot !== null) {
+              const list = this.listRef.current;
+              list.scrollTop = list.scrollHeight - snapshot;
+        }
+    }   
+    render() {
+        return (
+              &lt;div ref={this.listRef}&gt;{/* ...contents... */}&lt;/div&gt;
+        );
+    }
+}
+</code></pre><h2 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h2><h3 id="componentWillUnmount"><a href="#componentWillUnmount" class="headerlink" title="componentWillUnmount"></a>componentWillUnmount</h3><p>可以在这里执行一些清理工作，比如清楚组件中使用的定时器，清楚componentDidMount中手动创建的DOM元素等，以避免引起内存泄漏。</p>
+<h2 id="Hooks"><a href="#Hooks" class="headerlink" title="Hooks"></a>Hooks</h2><p>useEffect Hook 可以视作 componentDidMount、componentDidUpdate 和 componentWillUnmount 的组合体。</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a href="https://www.jianshu.com/p/514fe21b9914" target="_blank" rel="noopener">详解React生命周期(包括react16最新版)</a>      </li>
+<li><a href="http://www.ptbird.cn/react-hoot-useEffect.html" target="_blank" rel="noopener">React Hook：使用 useEffect</a></li>
+</ul>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="#">ChiaIn</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://airclouds-blog.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+
+
+</html>

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="ChiaIn&#39;s space">
+    <meta name="keyword" content="undergraduate">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        umi及dva学习笔记及心得 - ChiaIn&#39;s Blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> To Live </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>Chu ChiaIn</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#学习链接"><span class="toc-text">学习链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对umi的简单认识"><span class="toc-text">对umi的简单认识</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#约定式文件"><span class="toc-text">约定式文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#关于配置文件"><span class="toc-text">关于配置文件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对dva简单的认识"><span class="toc-text">对dva简单的认识</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#页面中使用model"><span class="toc-text">页面中使用model</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#dva的优缺点"><span class="toc-text">dva的优缺点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Todo"><span class="toc-text">Todo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考"><span class="toc-text">参考</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> To Live </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        umi及dva学习笔记及心得
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2020-03-29 14:53:34</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#前端框架" title="前端框架">前端框架</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h3 id="学习链接"><a href="#学习链接" class="headerlink" title="学习链接"></a>学习链接</h3><ul>
+<li><a href="https://dvajs.com/guide/" target="_blank" rel="noopener">DvaJS官方网站</a>     </li>
+<li><a href="https://umijs.org/" target="_blank" rel="noopener">UmiJs官方网站</a></li>
+<li><a href="https://github.com/dvajs/dva-knowledgemap" target="_blank" rel="noopener">dva的最小知识集</a></li>
+</ul>
+<h3 id="对umi的简单认识"><a href="#对umi的简单认识" class="headerlink" title="对umi的简单认识"></a>对umi的简单认识</h3><p>Umi其实在我看来是对dva的再次封装，解决了dva的model每次都要手写载入的问题，节省了很多人力操作。<br>另外，Umi比较支持ts的使用，这在官方文档中给出的example也有体现。</p>
+<h4 id="约定式文件"><a href="#约定式文件" class="headerlink" title="约定式文件"></a>约定式文件</h4><ul>
+<li>它以路由为基础，支持配置式路由和约定式路由两种路由功能。约定式路由依赖严格的文件名和文件组织结构工作。       </li>
+</ul>
+<p>比如分析src/pages目录拿到路由配置。</p>
+<pre><code>└─ pages               [
+  ├─ index.jsx   =&gt;      { exact: true, path: &apos;/&apos;, component: &apos;@/pages/index&apos; },
+  └─ users.jsx           { exact: true, path: &apos;/users&apos;, component: &apos;@/pages/users&apos; },
+                       ]
+</code></pre><p>Umi 里约定目录下有 _layout.tsx时会生成嵌套路由，以 _layout.tsx 为该目录的 layout。layout 文件需要返回一个 React 组件，并通过 props.children 渲染子组件。</p>
+<pre><code>.                                [
+└── pages                         { exact: false, path: &apos;/users&apos;, component: &apos;@/pages/users/_layout&apos;,
+  └── users                        routes: [ 
+    ├── _layout.jsx       =&gt;        { exact: true, path: &apos;/&apos;, component: &apos;@/pages/index&apos; },
+    ├── index.jsx                   { exact: true, path: &apos;/users&apos;, component: &apos;@/pages/users&apos; },
+    └── list.jsx                   ], 
+                                  },
+                                 ]
+</code></pre><p>在官方的文档中都记载的很详细。</p>
+<ul>
+<li>约定式Mock文件<br>这部分没有使用过，有待后期探索.</li>
+</ul>
+<p>除此以外，可以使用 dva 来处理数据流，以响应一些复杂的交互操作。是否启用dva可以在配置文件中设置。             </p>
+<h4 id="关于配置文件"><a href="#关于配置文件" class="headerlink" title="关于配置文件"></a>关于配置文件</h4><p>默认配置文件为./umirc.js，如果配置比较复杂需要拆分，可以放到 config/config.js中。<strong>两种配置文件，只能选择一个</strong>，且./umirc.js优先级较高。</p>
+<blockquote>
+<p>这一点我深有感触，之前开发项目的时候因为官方文档还没有给出开发者这么明确的提示，所以我两个都创建了以为umi会在编译的时候合并配置文件，并且在config文件中改了很多配置但是结果都没有奏效，后来把umirc.js删了才实现自己想要的东西。当时非常花费时间，这是个坑…</p>
+</blockquote>
+<h3 id="对dva简单的认识"><a href="#对dva简单的认识" class="headerlink" title="对dva简单的认识"></a>对dva简单的认识</h3><p>dva 首先是一个基于 <a href="https://github.com/reduxjs/redux" target="_blank" rel="noopener">redux</a> 和 <a href="https://github.com/redux-saga/redux-saga" target="_blank" rel="noopener">redux-saga</a> 的数据流方案.<br>通过项目了解到了官方给出的其中2个特性：</p>
+<blockquote>
+<p>elm 概念，通过 reducers, effects 和 subscriptions 组织 model；<br>插件机制，比如 dva-loading 可以自动处理 loading 状态，不用一遍遍地写 showLoading 和 hideLoading</p>
+</blockquote>
+<ul>
+<li>针对第一个特性，我的感受是它使用起来更像Vuex，saga对redux中dispatch方法的一个封装，通过发action通知store更新state。没有完整地学习过源码，因此只是使用感受，毕竟Vue和React在数据流的处理上是截然不同的。Vue使用的双向数据绑定，而React遵从单向数据流。</li>
+</ul>
+<p>因此大部分都会认为对于大项目来说React开发会比Vue开发更省力，人们不需要添加过多复杂的数据拦截操作，只是交给Redux完成数据监听工作。</p>
+<ul>
+<li>对于第二个特性，这对于前端来说是个比较大的解放。我们不需要再重复去处理不同组件的loading状态。</li>
+</ul>
+<h4 id="页面中使用model"><a href="#页面中使用model" class="headerlink" title="页面中使用model"></a>页面中使用model</h4><p>dva 通过 model 的概念把一个领域的模型管理起来，包含同步更新 state 的 reducers，处理异步逻辑的 effects，订阅数据源的 subscriptions 。<br>model文件里面包括：</p>
+<blockquote>
+<p>namespace ：在全局 state 上的 key</p>
+<p>state ：初始值，在这里是空数组</p>
+<p>reducers ：等同于 redux 里的 reducer，接收 action，同步更新 state</p>
+</blockquote>
+<p>定义完model文件后将它引入到index.js文件中。<br>但是说到底model里面只放了数据，我们怎么把它和组件连起来？dva提供了connect方法。dva的connect方法其实和redux的connect是一样的。</p>
+<blockquote>
+<p>回忆到之前做的一个项目中：在container 里面导入对应component然后通过mapDispatchToProps把container里面的一些函数（fetchData）映射到component的prop，然后在component里面可以直接调用这个函数，当然被当作组件的prop来对待。此处的container是一个经过connet包装的高阶组件？</p>
+</blockquote>
+<h4 id="dva的优缺点"><a href="#dva的优缺点" class="headerlink" title="dva的优缺点"></a>dva的优缺点</h4><p>优点：</p>
+<ol>
+<li>特别适合于umi搭配使用，对antd等ui框架支持性也非常不错</li>
+<li>容易上手</li>
+<li>节省了很多重复的人工操作</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li>对于大型项目可能不是非常好的选择（有人指出：不建议具备一定规模的非阿里系团队在生产环境中使用）</li>
+</ol>
+<h3 id="Todo"><a href="#Todo" class="headerlink" title="Todo"></a>Todo</h3><ul>
+<li>saga的深入学习，特别是要明白saga的Middleware.    </li>
+<li><a href="https://redux-saga-in-chinese.js.org/docs/introduction/index.html" target="_blank" rel="noopener">redux-saga</a></li>
+</ul>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
+<li><a href="http://niexiaotao.cn/2018/04/11/dva%E6%BA%90%E7%A0%81%E8%A7%A3%E8%AF%BB/#%E4%BC%98%E5%8A%BF%E6%80%BB%E7%BB%93" target="_blank" rel="noopener">dva源码解读</a></li>
+<li><a href="https://www.jianshu.com/p/dc493809a2fd" target="_blank" rel="noopener">初识UmiJS</a></li>
+</ul>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="#">ChiaIn</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://airclouds-blog.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+
+
+</html>

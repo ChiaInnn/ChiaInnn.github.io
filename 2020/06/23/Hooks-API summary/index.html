@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="ChiaIn&#39;s space">
+    <meta name="keyword" content="undergraduate">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        Hooks-API summary - ChiaIn&#39;s Blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> To Live </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>Chu ChiaIn</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Context"><span class="toc-text">Context</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#useContext"><span class="toc-text">useContext</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#useReducer"><span class="toc-text">useReducer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#useMemo"><span class="toc-text">useMemo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#useCallBack"><span class="toc-text">useCallBack</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference"><span class="toc-text">Reference</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> To Live </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        Hooks-API summary
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2020-06-23 10:31:48</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#Hooks" title="Hooks">Hooks</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <p>之前接触到useContext是在项目里面，项目里面主要用在对组件的封装上面，为了获取组件内部的值并用于其他地方所以使用到了useContext。但是使用的时候也只是学着前辈的一些做法去实现，时间紧急没有过多深入去了解相关的内容。今天就了解下相关内容。<br>抛开Hooks不说，先了解下context，其实useContext只是对context的另一种实现。</p>
+<h3 id="Context"><a href="#Context" class="headerlink" title="Context"></a>Context</h3><p>context的作用只是为需要对它所包含的组件提供全局的数据共享。<br>回想一下我们如果要进行父子组件，或者跨越多层来传值的话，之前的做法不就是一层一层地用props去传值。但是，现在使用context以后，如果我们需要使用context中提供的数据，我们不需要从父组件那里通过props去获取，我们可以直接从context的提供者(Provider)那里去获取数据。<br>talk is cheap,show me code.</p>
+<pre><code>//官方Demo
+//light是默认值
+const ThemeContext = React.createContext(&apos;light&apos;);
+class App extends React.Component {
+    render() {
+// 使用Provider去传递值，而不需要经过中间的组件，value就是要传的值
+// Any component can read it, no matter how deep it is.
+        return (
+          &lt;ThemeContext.Provider value=&quot;dark&quot;&gt;
+            &lt;Toolbar /&gt;
+          &lt;/ThemeContext.Provider&gt;
+        );
+    }
+}
+//没有经过Toolbar传值
+function Toolbar() {
+    return (
+        &lt;div&gt;
+              &lt;ThemedButton /&gt;
+        &lt;/div&gt;
+    );
+}
+class ThemedButton extends React.Component {
+// React will find the closest theme Provider above and use its value.
+//从上面的注释可以知道context是支持嵌套的
+static contextType = ThemeContext;
+    render() {
+        return &lt;Button theme={this.context} /&gt;;
+    }
+}
+</code></pre><p>另外也有Class的其他使用方法</p>
+<pre><code>class GrandSon extends React.Component{
+    render();
+    return(
+        &lt;ThemeContext.Consumer&gt;
+            {(value) =&gt; {
+                //some code of GrandSon Component
+                //...
+            }}
+        &lt;/ThemeContext.Consumer&gt;
+    )
+}
+</code></pre><p>关于Context还有一个比较重要的点是：当Context Provider的value发生变化时，他的所有子级消费者都会rerender。</p>
+<p>但是官方给出的建议是context固然好用，但是对组件复用很不友好。<br>对于复用性要求高的组件官方推荐了通过props传递组件的方式去实现。</p>
+<pre><code>function SplitPane(props) {
+    return (
+        &lt;div className=&quot;SplitPane&quot;&gt;
+              &lt;div className=&quot;SplitPane-left&quot;&gt;
+                {props.left}
+              &lt;/div&gt;
+              &lt;div className=&quot;SplitPane-right&quot;&gt;
+                {props.right}
+              &lt;/div&gt;
+        &lt;/div&gt;
+    );
+}
+function App() {
+    return (
+        &lt;SplitPane
+            //props传组件
+              left={
+                &lt;Contacts /&gt;
+              }
+              right={
+                &lt;Chat /&gt;
+              } /&gt;
+    );
+}
+</code></pre><h3 id="useContext"><a href="#useContext" class="headerlink" title="useContext"></a>useContext</h3><p>show code</p>
+<pre><code>//定义context
+const     LoginContext = React.createContext();
+function LoginContextFather(){
+    //some code
+    ...
+    ...
+    return(
+        &lt;LoginContext.provider value={}&gt;
+            &lt;LoginContextUser&gt;
+        &lt;/LoginContext.provider&gt;
+    )
+}
+
+function LoginContextUser(){
+    //以后像使用普通变量一样使用即可
+    const somethingFromContext = useContext(LoginContext);
+    return(
+        //some code
+    )
+}
+</code></pre><p>简单来说其实context和useContext只是写法上有了差异</p>
+<h3 id="useReducer"><a href="#useReducer" class="headerlink" title="useReducer"></a>useReducer</h3><p>useReducer是useState的替代方案，也可以看做是useState的内部实现。遵从了redux的思想。<br>useReducer适用的场景：   </p>
+<ol>
+<li>state逻辑较为复杂且包含多个子值   </li>
+<li><p>下一state依赖前一state<br>show code<br> //通过接受一个reduer和state的值返回一个匹配的dispatch函数和state<br> //方式1<br> const [state,dispatch] = useReducer(reducer,initialState)</p>
+<p> //方式2<br> const [state,dispatch] = useReducer(reducer,{</p>
+<pre><code>propName:initialValue
+</code></pre><p> })<br> //也可以通过初始化函数去初始化值<br> function init(initialCount) {</p>
+<pre><code>return {count: initialCount};
+</code></pre><p> }<br> const [state, dispatch] = useReducer(reducer, initialCount, init);</p>
+<h3 id="useMemo"><a href="#useMemo" class="headerlink" title="useMemo"></a>useMemo</h3><p>返回一个<strong>memoized value</strong>.<em>[这是与useCallback的区别]</em><br>用于避免复杂运算，和useEffect有点相像。只有依赖数组中值改变了，它才会重新计算结果。<br>useMemo更像是为了性能优化而存在。<br>有关依赖数组：依赖项数组不作为参数传递给函数。但是从概念上讲，函数中引用的每个值也应该出现在依赖项数组中。</p>
+<blockquote>
+<p>We recommend using the <a href="https://github.com/facebook/react/issues/14920" target="_blank" rel="noopener">exhaustive-deps</a> rule as part of our <a href="https://www.npmjs.com/package/eslint-plugin-react-hooks#installation" target="_blank" rel="noopener">eslint-plugin-react-hooks</a> package. It warns when dependencies are specified incorrectly and suggests a fix.<br>show code</p>
+</blockquote>
+<p> const memoizedValue = useMemo(() =&gt; computeExpensiveValue(a, b), [a, b]);</p>
+</li>
+</ol>
+<h3 id="useCallBack"><a href="#useCallBack" class="headerlink" title="useCallBack"></a>useCallBack</h3><p>返回一个<strong>memoized callback</strong>.</p>
+<blockquote>
+<p>useCallback(fn, deps) is equivalent to useMemo(() =&gt; fn, deps).</p>
+</blockquote>
+<pre><code>const memoizedCallback = useCallback(
+    () =&gt; {
+        doSomething(a, b);
+    },[a, b]
+);
+</code></pre><h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ul>
+<li><a href="https://reactjs.org/docs/context.html#reactcreatecontext" target="_blank" rel="noopener">React官方文档-context</a>  </li>
+<li><a href="https://www.jianshu.com/p/eddb25cda5f0" target="_blank" rel="noopener">这一次彻底搞定 useReducer - useContext使用</a></li>
+<li><a href="https://reactjs.org/docs/hooks-reference.html#usereducer" target="_blank" rel="noopener">React官方文档-useReducer部分</a></li>
+</ul>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="#">ChiaIn</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://airclouds-blog.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+
+
+</html>
